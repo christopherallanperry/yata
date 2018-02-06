@@ -1,7 +1,7 @@
 //Require the express package and use express.Router()
 const express     = require('express');
 const router      = express.Router();
-const bucketlist  = require('../models/List');
+const bucketlist  = require('../models/list');
 
 //GET HTTP method to /bucketlist
 router.get('/', (req, res) => {
@@ -16,7 +16,6 @@ router.get('/', (req, res) => {
 });
 
 //POST HTTP method to /bucketlist
-
 router.post('/', (req, res, next) => {
   const newList = new bucketlist({
     title: req.body.title,
@@ -34,7 +33,6 @@ router.post('/', (req, res, next) => {
 });
 
 //DELETE HTTP method to /bucketlist. Here, we pass in a param which is the object id.
-
 router.delete('/:id', (req, res, next) => {
   //access the parameter which is the id of the item to be deleted
   const id = req.params.id;
