@@ -1,13 +1,13 @@
 // Dependencies
-const express     = require('express');
-const path        = require('path');
-const bodyParser  = require('body-parser');
-const cors        = require('cors');
-const mongoose    = require('mongoose');
-const errorhandler = require('errorhandler');
-const logger      = require('morgan');
-const config      = require('./config/config');
-const bucketlist  = require('./controllers/bucketlist');
+const express       = require('express');
+const path          = require('path');
+const bodyParser    = require('body-parser');
+const cors          = require('cors');
+const mongoose      = require('mongoose');
+const errorhandler  = require('errorhandler');
+const logger        = require('morgan');
+const config        = require('./config/config');
+const bucketlist    = require('./controllers/bucketlist');
 
 //Connect mongoose to database
 mongoose.connect(config.db);
@@ -37,7 +37,7 @@ app.get('/', (req, res) => {
   res.send('Invalid page');
 });
 
-//Routing all HTTP requests to /bucketlist to bucketlist controller
+// Routing all HTTP requests to /bucketlist to bucketlist controller
 app.use('/bucketlist', bucketlist);
 
 //Listen to port 3000
