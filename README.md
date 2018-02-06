@@ -1,2 +1,2 @@
-# yata
+# YATA
 Yet Another Todo App
