@@ -15,6 +15,22 @@ router.get('/', (req, res) => {
   });
 });
 
+//GET HTTP method to /bucketlist/:id (single list item)
+router.get('/:id', (req, res, next) => {
+  //access the parameter which is the id of the item to be deleted
+  const id = req.params.id;
+  //Call the model method deleteListById
+  bucketlist.getListById(id, (err, list) => {
+    if (err) {
+      res.json({ success: false, message: `Failed to find the list item. Error: ${err}` });
+    } else if (list) {
+      res.write(JSON.stringify({ success: true, lists: list }, null, 2));
+      res.end();
+    } else
+      res.json({ success: false });
+  });
+});
+
 //POST HTTP method to /bucketlist
 router.post('/', (req, res, next) => {
   const newList = new bucketlist({

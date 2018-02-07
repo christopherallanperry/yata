@@ -7,6 +7,8 @@ router.route('/bucketlist')
   .get(list.index)
   .post(list.create);
 router.route('/bucketlist/:id')
+  .put(list.update)
+  .patch(list.update)
   .delete(list.delete);
 
 module.exports = router;
