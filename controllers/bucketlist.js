@@ -7,9 +7,9 @@ const bucketlist  = require('../models/list');
 router.get('/', (req, res) => {
   bucketlist.getAllLists((err, lists) => {
     if (err) {
-      res.json({ success: false, message: `Failed to load all lists. Error: ${err}` });
+      res.status(404).json({ success: false, message: `Failed to load all lists. Error: ${err}` });
     } else {
-      res.write(JSON.stringify({ success: true, lists: lists }, null, 2));
+      res.status(200).write(JSON.stringify({ success: true, lists: lists }, null, 2));
       res.end();
     }
   });
@@ -22,12 +22,12 @@ router.get('/:id', (req, res, next) => {
   //Call the model method deleteListById
   bucketlist.getListById(id, (err, list) => {
     if (err) {
-      res.json({ success: false, message: `Failed to find the list item. Error: ${err}` });
+      res.status(404).json({ success: false, message: `Failed to find the list item. Error: ${err}` });
     } else if (list) {
-      res.write(JSON.stringify({ success: true, lists: list }, null, 2));
+      res.status(200).write(JSON.stringify({ success: true, lists: list }, null, 2));
       res.end();
     } else
-      res.json({ success: false });
+      res.status(400).json({ success: false, message: `Bad request. Error ${err}` });
   });
 });
 
@@ -40,11 +40,9 @@ router.post('/', (req, res, next) => {
   });
   bucketlist.addList(newList, (err, list) => {
     if (err) {
-      res.json({ success: false, message: `Failed to create a new list. Error: ${err}` });
-
+      res.status(400).json({ success: false, message: `Failed to create a new list. Error: ${err}` });
     } else
-      res.json({ success: true, message: 'Added successfully.' });
-
+      res.status(201).json({ success: true, message: 'Added successfully.' });
   });
 });
 
@@ -56,11 +54,11 @@ router.put('/:id', (req, res, next) => {
   //call the model method updateListById
   bucketlist.updateListById(id, changes, (err, list) => {
     if (err) {
-      res.json({ success: false, message: `Failed to update the list. Error: ${err}` });
+      res.status(400).json({ success: false, message: `Failed to update the list. Error: ${err}` });
     } else if (list) {
-      res.json({ success: true, message: 'Updated successfully' });
+      res.status(200).json({ success: true, message: 'Updated successfully' });
     } else
-      res.json({ success: false });
+      res.status(400).json({ success: false });
   });
 });
 
@@ -72,11 +70,11 @@ router.delete('/:id', (req, res, next) => {
   //Call the model method deleteListById
   bucketlist.deleteListById(id, (err, list) => {
     if (err) {
-      res.json({ success: false, message: `Failed to delete the list. Error: ${err}` });
+      res.status(400).json({ success: false, message: `Failed to delete the list. Error: ${err}` });
     } else if (list) {
-      res.json({ success: true, message: 'Deleted successfully' });
+      res.status(204).json({ success: true, message: 'Deleted successfully' });
     } else
-      res.json({ success: false });
+      res.status(400).json({ success: false });
   });
 });
 
