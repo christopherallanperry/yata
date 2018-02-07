@@ -32,7 +32,24 @@ router.post('/', (req, res, next) => {
   });
 });
 
-//DELETE HTTP method to /bucketlist. Here, we pass in a param which is the object id.
+//PUT HTTP method to /bucketlist/:id
+router.put('/:id', (req, res, next) => {
+  // Access the id parameter
+  const id = req.params.id;
+  const changes = req.body;
+  //call the model method updateListById
+  bucketlist.updateListById(id, changes, (err, list) => {
+    if (err) {
+      res.json({ success: false, message: `Failed to update the list. Error: ${err}` });
+    } else if (list) {
+      res.json({ success: true, message: 'Updated successfully' });
+    } else
+      res.json({ success: false });
+  });
+});
+
+
+//DELETE HTTP method to /bucketlist/:id. Here, we pass in a param which is the object id.
 router.delete('/:id', (req, res, next) => {
   //access the parameter which is the id of the item to be deleted
   const id = req.params.id;

@@ -21,12 +21,19 @@ module.exports.getAllLists = (callback) => {
   BucketList.find(callback);
 };
 
-//newList.save is used to insert the document into MongoDB
+// newList.save is used to insert the document into MongoDB
 module.exports.addList = (newList, callback) => {
   newList.save(callback);
 };
 
-//Here we need to pass an id parameter to BUcketList.remove
+// updateList
+module.exports.updateListById = (id, changes, callback) => {
+  const query = { _id: id };
+  BucketList.update(query, changes, callback);
+  // do something else?
+};
+
+// Here we need to pass an id parameter to BucketList.remove
 module.exports.deleteListById = (id, callback) => {
   const query = { _id: id };
   BucketList.remove(query, callback);
