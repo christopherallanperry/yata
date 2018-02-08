@@ -18,11 +18,14 @@
   },
   "homepage": "https://github.com/christopherallanperry/yata#readme",
   "dependencies": {
+    "@vue/cli-plugin-eslint": "^3.0.0-alpha.9",
+    "@vue/cli-service-global": "^3.0.0-alpha.9",
     "body-parser": "^1.18.2",
     "cors": "^2.8.4",
     "errorhandler": "^1.5.0",
     "express": "^4.16.2",
     "mongoose": "^5.0.3",
-    "morgan": "^1.9.0"
+    "morgan": "^1.9.0",
+    "vue": "^2.5.13"
   }
 }
