@@ -1,7 +1,7 @@
-//Require mongoose package
+// Require mongoose package
 const mongoose = require('mongoose');
 
-//Define BucketlistSchema with title, description and category
+// Define BucketlistSchema with title, description and category
 const BucketlistSchema = mongoose.Schema({
   title: { type: String, required: true },
   description: String,
@@ -16,7 +16,7 @@ const BucketlistSchema = mongoose.Schema({
 
 const BucketList = module.exports = mongoose.model('BucketList', BucketlistSchema);
 
-//BucketList.find() returns all the lists
+// BucketList.find() returns all the lists
 module.exports.getAllLists = (callback) => {
   BucketList.find(callback);
 };
