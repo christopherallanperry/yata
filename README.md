@@ -31,7 +31,7 @@ Assuming all is working correctly, you should now be able to access the availabl
  - GET http://localhost:3000/bucketlist - all list items
  - GET http://localhost:3000/bucketlist/:id - single list item by ID
  - POST http://localhost:3000/bucketlist - create new list item
- - UPDATE http://localhost:3000/bucketlist/:id - update list item by ID
+ - PUT http://localhost:3000/bucketlist/:id - update list item by ID
  - DELETE http://localhost:3000/bucketlist/:id - delete list item by ID
 
 
