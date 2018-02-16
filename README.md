@@ -11,7 +11,7 @@ At time of writing this README.md (16/02/2018), the API is built and functional,
 
 ## Installation Steps
 ### API
-From the CLI, execute the following in the root folder
+From the CLI, execute the following in the root `yata/` folder
 ```cli
 $ npm install
 ```
@@ -36,3 +36,4 @@ Assuming all is working correctly, you should now be able to access the availabl
 
 
 ### Front-End
+_TBD_
